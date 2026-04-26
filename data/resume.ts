@@ -1,6 +1,8 @@
 export const resume = {
   name: "Rodjean Verzosa",
   title: "Senior Fullstack Developer",
+  summary:
+      "A Bachelor of Science in Information Technology graduate from Colegio de Montalban, currently contributing as a Senior Software Engineer at iPick. Skilled in NestJS, Node.js, and JavaScript, with experience in software development and data analysis across various industries. At iPick, collaborates on software engineering projects while leveraging technical expertise in modern development frameworks. Dedicated to creating efficient and innovative solutions, demonstrating a strong foundation in technology and commitment to advancing in the industry.",
 
   contact: {
     location: "Montalban Rizal, Philippines",
@@ -8,11 +10,6 @@ export const resume = {
     phone: "+63 912 190 0052",
     github: "https://github.com/yourusername",
     linkedin: "https://linkedin.com/in/yourusername",
-  },
-
-  about: {
-    summary:
-      "A Bachelor of Science in Information Technology graduate from Colegio de Montalban, currently contributing as a Senior Software Engineer at iPick. Skilled in NestJS, Node.js, and JavaScript, with experience in software development and data analysis across various industries. At iPick, collaborates on software engineering projects while leveraging technical expertise in modern development frameworks. Dedicated to creating efficient and innovative solutions, demonstrating a strong foundation in technology and commitment to advancing in the industry.",
   },
 
   experience: [

@@ -1,8 +1,10 @@
+import BackgroundGrid from "@/components/ui/BackgroundGrid";
 import "./globals.css";
 import AIChatWidget from "@/components/ui/AIChatWidget";
+import { AnimatePresence } from "framer-motion";
 
 export const metadata = {
-  title: "Portfolio",
+  title: "Rodjean Verzosa",
   description: "Software Engineer Portfolio",
 };
 
@@ -13,9 +15,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="container py-10 relative">
-        {children}
+      <body className="relative min-h-screen overflow-x-hidden bg-white dark:bg-neutral-950">
+        {/* Content */}
+        <div className="relative z-10 container py-10">
+          <AnimatePresence mode="wait">
+            {children}
+          </AnimatePresence>
+        </div>
 
+        {/* AI Widget */}
         <AIChatWidget />
       </body>
     </html>

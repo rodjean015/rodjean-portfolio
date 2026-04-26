@@ -13,17 +13,17 @@ export default function ThemeToggleButton({
     return (
         <button
             onClick={onToggle}
-            className={`absolute top-0 right-0 flex items-center w-14 h-7 rounded-full p-1 transition
+            className={`absolute top-0 right-0 flex items-center w-10 h-5 rounded-full p-1 transition
                 ${dark
-                    ? "bg-neutral-800 shadow-[0_0_12px_rgba(255,255,255,0.1)]"
-                    : "bg-neutral-300"
+                    ? "bg-slate-800 shadow-[0_0_12px_rgba(255,255,255,0.1)]"
+                    : "bg-slate-300"
                 }
             `}
         >
             <motion.div
                 layout
                 transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                className={`w-5 h-5 rounded-full flex items-center justify-center shadow-md
+                className={`w-4 h-4 rounded-full flex items-center justify-center shadow-md
                     ${dark ? "bg-neutral-200" : "bg-white"}
                 `}
                 animate={{

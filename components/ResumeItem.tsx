@@ -13,7 +13,6 @@ export default function ResumeItem({
 }) {
     return (
         <div className="mb-4">
-
             {/* Header */}
             <div className="flex justify-between">
                 <h1 className={`font-medium ${dark ? "text-neutral-200" : "text-neutral-900"} uppercase`}>
@@ -40,7 +39,6 @@ export default function ResumeItem({
                     {description}
                 </p>
             )}
-
         </div>
     );
 }

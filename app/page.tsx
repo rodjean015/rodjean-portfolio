@@ -1,15 +1,16 @@
 "use client";
 
 import { resume } from "@/data/resume";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Section from "@/components/Section";
 import ResumeItem from "@/components/ResumeItem";
 import SkillBadge from "@/components/SkillBadge";
-import About from "@/components/About";
 import Profile from "@/components/Profile";
 import ThemeToggleButton from "@/components/ui/ThemeToggleButton";
 import ProfileIntro from "@/components/ProfileIntro";
 import { useTheme } from "@/hooks/useTheme";
+import BackgroundGrid from "@/components/ui/BackgroundGrid";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const { dark, setDark } = useTheme();
@@ -21,16 +22,21 @@ export default function Home() {
 
   return (
     <main>
-
       {/* Header */}
-      <header className="mb-12 flex flex-col md:flex-row md:items-stretch gap-8 relative">
+      <header className="mb-8 flex flex-row items-center gap-6 relative">
         <ThemeToggleButton dark={dark} onToggle={toggleTheme} />
         <Profile dark={dark} />
-        <ProfileIntro resume={resume} dark={dark} />
+        <div className="flex-1">
+          <ProfileIntro resume={resume} dark={dark} />
+        </div>
       </header>
 
-      {/* Sections stay same */}
-      <About summary={resume.about.summary} dark={dark} />
+      <Section title="Summary" dark={dark}>
+        <ResumeItem
+          description={resume.summary}
+          dark={dark}
+        />
+      </Section>
 
       <Section title="Experience" dark={dark} moreHref="/experience">
         {resume.experience.map((exp) => (
@@ -45,7 +51,7 @@ export default function Home() {
         ))}
       </Section>
 
-      <Section title="Projects" dark={dark}>
+      <Section title="Projects" dark={dark} moreHref="/projects">
         {resume.projects.map((proj) => (
           <ResumeItem
             key={proj.name}
@@ -56,7 +62,7 @@ export default function Home() {
         ))}
       </Section>
 
-      <Section title="Tech Skills" dark={dark}>
+      <Section title="Tech Skills" dark={dark} moreHref="/tech">
         <div className="flex flex-wrap gap-2">
           {resume.skills.map((skill, i) => (
             <SkillBadge key={i} skill={skill} dark={dark} />
@@ -75,7 +81,7 @@ export default function Home() {
           />
         ))}
       </Section>
-
+      <Footer dark={dark} />
     </main>
   );
 }
