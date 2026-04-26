@@ -25,7 +25,7 @@ export default function ProfileIntro({ resume, dark }: ProfileIntroProps) {
             {/* Name */}
             <h1 className="text-2xl md:text-3xl font-bold tracking-tight flex items-center justify-start gap-2">
                 {resume.name}
-                <CheckBadgeIcon className="w-5 h-5 md:w-6 md:h-6 text-blue-400" />
+                <CheckBadgeIcon className="w-4 h-4 md:w-5 md:h-5 text-blue-400" />
             </h1>
 
             {/* Title */}

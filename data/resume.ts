@@ -2,14 +2,13 @@ export const resume = {
   name: "Rodjean Verzosa",
   title: "Senior Fullstack Developer",
   summary:
-      "A Bachelor of Science in Information Technology graduate from Colegio de Montalban, currently contributing as a Senior Software Engineer at iPick. Skilled in NestJS, Node.js, and JavaScript, with experience in software development and data analysis across various industries. At iPick, collaborates on software engineering projects while leveraging technical expertise in modern development frameworks. Dedicated to creating efficient and innovative solutions, demonstrating a strong foundation in technology and commitment to advancing in the industry.",
+    "A Bachelor of Science in Information Technology graduate from Colegio de Montalban, currently contributing as a Senior Software Engineer at iPick. Skilled in NestJS, Node.js, and JavaScript, with experience in software development and data analysis across various industries. At iPick, collaborates on software engineering projects while leveraging technical expertise in modern development frameworks. Dedicated to creating efficient and innovative solutions, demonstrating a strong foundation in technology and commitment to advancing in the industry.",
 
   contact: {
     location: "Montalban Rizal, Philippines",
     email: "rodjeanverzosa001@gmail.com",
-    phone: "+63 912 190 0052",
-    github: "https://github.com/yourusername",
-    linkedin: "https://linkedin.com/in/yourusername",
+    github: "https://github.com/rodjean015",
+    linkedin: "www.linkedin.com/in/rodjean-verzosa-326a7b255",
   },
 
   experience: [
@@ -49,7 +48,7 @@ export const resume = {
     "React Native",
     "Ionic",
     "Android",
-    "IOS"
+    "IOS",
   ],
 
   education: [
@@ -57,6 +56,25 @@ export const resume = {
       school: "Colegio de Montalban",
       degree: "BS Information Technology",
       period: "2013 - 2017",
+    },
+  ],
+
+  certificate: [
+    {
+      title: "Python Essentials 1",
+      period: "Issue: June 11, 2024",
+    },
+    {
+      title: "JavaScript Algorithms and Data Structures",
+      period: "Issue: June 12, 2023",
+    },
+    {
+      title: "Resposive Web Design",
+      period: "Issue: June 12, 2023",
+    },
+    {
+      title: "WordPress and Marketing Course",
+      period: "Issue: January 20,2024",
     },
   ],
 };

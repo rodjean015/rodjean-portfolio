@@ -15,7 +15,7 @@ export default function ResumeItem({
         <div className="mb-4">
             {/* Header */}
             <div className="flex justify-between">
-                <h1 className={`font-medium ${dark ? "text-neutral-200" : "text-neutral-900"} uppercase`}>
+                <h1 className={`font-medium ${dark ? "text-neutral-200" : "text-neutral-900"}`}>
                     {title}
                 </h1>
 
@@ -28,7 +28,7 @@ export default function ResumeItem({
 
             {/* Subtitle */}
             {subtitle && (
-                <p className={`text-sm ${dark ? "text-zinc-400" : "text-zinc-600"} uppercase`}>
+                <p className={`text-sm ${dark ? "text-zinc-400" : "text-zinc-600"}`}>
                     {subtitle}
                 </p>
             )}

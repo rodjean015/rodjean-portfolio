@@ -10,17 +10,17 @@ type FloatingAIButtonProps = {
 
 export default function FloatingAIButton({
     onClick,
-    dark = true,
+    dark = false,
 }: FloatingAIButtonProps) {
     return (
         <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 group">
             {/* Tooltip */}
             <span
                 className={`absolute right-12 md:right-14 top-1/2 -translate-y-1/2 whitespace-nowrap text-[10px] md:text-xs px-2 md:px-3 py-1 rounded-md opacity-0 group-hover:opacity-100 transition
-                ${dark ? "bg-neutral-800 text-neutral-200" : "bg-neutral-100 text-white"}
+                ${dark ? "bg-neutral-800 text-neutral-200" : "bg-neutral-900 text-white"}
                 `}
             >
-                Chat with AI
+                Chat with Agent 
             </span>
 
             {/* Button */}

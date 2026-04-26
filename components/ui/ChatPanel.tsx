@@ -8,13 +8,15 @@ import { useChat } from "@/hooks/useChat";
 type Props = {
     open: boolean;
     onClose: () => void;
+    dark?: boolean;
 };
 
-export default function ChatPanel({ open, onClose }: Props) {
+export default function ChatPanel({ open, onClose, dark = false }: Props) {
     const { messages, sendMessage, loading } = useChat();
     const [input, setInput] = useState("");
 
     const handleSend = async () => {
+        if (!input.trim()) return;
         await sendMessage(input);
         setInput("");
     };
@@ -38,61 +40,152 @@ export default function ChatPanel({ open, onClose }: Props) {
                         animate={{ y: 0 }}
                         exit={{ y: "100%" }}
                         transition={{ type: "spring", stiffness: 260, damping: 25 }}
-                        className="
-              fixed bottom-6 right-6
-              w-[92vw] sm:w-[420px] h-[75vh]
-              bg-white dark:bg-neutral-900
-              text-neutral-900 dark:text-neutral-100
-              z-50 rounded-2xl shadow-2xl
-              flex flex-col
-              border border-neutral-200 dark:border-neutral-800
-            "
+                        className={`
+                            fixed bottom-6 right-6
+                            w-[92vw] sm:w-[420px] h-[75vh]
+                            z-50 shadow-2xl
+                            flex flex-col border
+                            ${dark
+                                ? "bg-zinc-900 text-neutral-100 border-neutral-800"
+                                : "bg-white text-neutral-900 border-neutral-200"}
+                        `}
                     >
                         {/* Header */}
-                        <div className="flex justify-between items-center p-4 border-b border-neutral-200 dark:border-neutral-800">
-                            <h2 className="text-sm font-medium">AI Assistant</h2>
+                        <div
+                            className={`
+                                flex justify-between items-center p-4 border-b
+                                ${dark ? "border-neutral-800" : "border-neutral-200"}
+                            `}
+                        >
+                            {/* Title + online status */}
+                            <div className="flex items-center gap-4">
+                                <img
+                                    src="/profile-pic.png"
+                                    alt="AI"
+                                    className="w-9 h-9 rounded-full object-cover bg-zinc-200"
+                                />
+
+                                {/* name + status stacked */}
+                                <div className="flex flex-col leading-tight">
+                                    <h2 className="text-sm font-medium">Rodjean Verzosa</h2>
+
+                                    {/* online badge */}
+                                    <div className="flex items-center gap-1 mt-0.5">
+                                        <span className="relative flex h-2.5 w-2.5">
+                                            <span className="animate-pulse absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                                        </span>
+
+                                        <span
+                                            className={`
+                                                text-[11px]
+                                                ${dark ? "text-neutral-400" : "text-neutral-500"}
+                                            `}
+                                        >
+                                            Online
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Close button */}
                             <button
                                 onClick={onClose}
-                                className="text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition"
+                                className={`
+                                    transition
+                                    ${dark
+                                        ? "text-neutral-400 hover:text-white"
+                                        : "text-neutral-500 hover:text-black"}
+                                `}
                             >
                                 <X size={18} />
                             </button>
                         </div>
 
                         {/* Messages */}
-                        <div className="flex-1 overflow-y-auto p-4 space-y-3 text-sm">
+                        <div className="flex-1 overflow-y-auto p-4 space-y-4 text-sm">
                             {messages.map((m, i) => (
                                 <div
                                     key={i}
-                                    className={`max-w-[85%] px-3 py-2 rounded-lg break-words ${m.role === "user"
-                                            ? "ml-auto bg-black text-white dark:bg-white dark:text-black"
-                                            : "bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100"
-                                        }`}
+                                    className={`flex items-end gap-2 ${m.role === "user" ? "justify-end" : "justify-start"}`}
                                 >
-                                    {m.content}
+                                    {/* AI avatar */}
+                                    {m.role !== "user" && (
+                                        <div className="relative w-7 h-7">
+                                            <img
+                                                src="/profile-pic.png"
+                                                alt="AI"
+                                                className="w-7 h-7 rounded-full object-cover bg-zinc-200"
+                                            />
+
+                                            {/* online badge */}
+                                            <span
+                                                className="
+                                                absolute bottom-0 right-0
+                                                w-2.5 h-2.5
+                                                rounded-full
+                                                bg-green-500
+                                                border-2
+                                                border-white
+                                                dark:border-neutral-900
+                                            "
+                                            />
+                                        </div>
+                                    )}
+
+                                    <div
+                                        className={`
+                                            max-w-[75%] px-3 py-2 rounded-lg break-words
+                                            ${m.role === "user"
+                                                ? dark
+                                                    ? "bg-white text-black"
+                                                    : "bg-black text-white"
+                                                : dark
+                                                    ? "bg-neutral-800 text-neutral-200"
+                                                    : "bg-neutral-200 text-neutral-900"
+                                            }
+                                        `}
+                                    >
+                                        {m.content}
+                                    </div>
+
+                                    {/* User avatar */}
+                                    {/* {m.role === "user" && (
+                                        <img
+                                            src="/user-avatar.png"
+                                            alt="User"
+                                            className="w-7 h-7 rounded-full object-cover"
+                                        />
+                                    )} */}
                                 </div>
                             ))}
 
                             {loading && (
-                                <div className="text-xs text-neutral-500">
+                                <div className={dark ? "text-neutral-400 text-xs" : "text-neutral-500 text-xs"}>
                                     AI is typing...
                                 </div>
                             )}
                         </div>
 
                         {/* Input */}
-                        <div className="p-3 border-t border-neutral-200 dark:border-neutral-800 flex gap-2">
+                        <div
+                            className={`
+                                p-3 border-t flex gap-2
+                                ${dark ? "border-neutral-800" : "border-neutral-200"}
+                            `}
+                        >
                             <input
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
                                 placeholder="Type your message..."
-                                className="
+                                className={`
                                     flex-1 text-sm px-3 py-2 rounded-md
-                                    border border-neutral-300 dark:border-neutral-700
-                                    bg-white dark:bg-neutral-900
-                                    text-neutral-900 dark:text-neutral-100
-                                    outline-none
-                                    "
+                                    border outline-none
+                                    ${dark
+                                        ? "bg-neutral-900 text-neutral-100 border-neutral-700"
+                                        : "bg-white text-neutral-900 border-neutral-300"
+                                    }
+                                `}
                                 onKeyDown={(e) => {
                                     if (e.key === "Enter") handleSend();
                                 }}
@@ -100,12 +193,12 @@ export default function ChatPanel({ open, onClose }: Props) {
 
                             <button
                                 onClick={handleSend}
-                                className="
-                                    px-3 py-2 text-sm rounded-md
-                                    bg-black text-white
-                                    dark:bg-white dark:text-black
-                                    hover:opacity-90 transition
-                                    "
+                                className={`
+                                    px-3 py-2 text-sm rounded-md transition
+                                    ${dark
+                                        ? "bg-white text-black hover:opacity-90"
+                                        : "bg-black text-white hover:opacity-90"}
+                                `}
                             >
                                 Send
                             </button>

@@ -1,7 +1,7 @@
 "use client";
 
 import { resume } from "@/data/resume";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Section from "@/components/Section";
 import ResumeItem from "@/components/ResumeItem";
 import SkillBadge from "@/components/SkillBadge";
@@ -9,11 +9,14 @@ import Profile from "@/components/Profile";
 import ThemeToggleButton from "@/components/ui/ThemeToggleButton";
 import ProfileIntro from "@/components/ProfileIntro";
 import { useTheme } from "@/hooks/useTheme";
-import BackgroundGrid from "@/components/ui/BackgroundGrid";
 import Footer from "@/components/Footer";
+import FloatingAIButton from "@/components/ui/FloatingAIButton";
+import ChatPanel from "@/components/ui/ChatPanel";
+import BackgroundGrid from "@/components/ui/BackgroundGrid";
 
 export default function Home() {
   const { dark, setDark } = useTheme();
+  const [open, setOpen] = useState(false);
 
   const toggleTheme = () => setDark(prev => !prev);
   useEffect(() => {
@@ -24,6 +27,7 @@ export default function Home() {
     <main>
       {/* Header */}
       <header className="mb-8 flex flex-row items-center gap-6 relative">
+        <BackgroundGrid dark={dark}/>
         <ThemeToggleButton dark={dark} onToggle={toggleTheme} />
         <Profile dark={dark} />
         <div className="flex-1">
@@ -81,7 +85,22 @@ export default function Home() {
           />
         ))}
       </Section>
+
+      <Section title="Certification" dark={dark}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+          {resume.certificate.map((crt) => (
+            <ResumeItem
+              key={crt.title}
+              title={crt.title}
+              description={crt.period}
+              dark={dark}
+            />
+          ))}
+        </div>
+      </Section>
       <Footer dark={dark} />
+      <FloatingAIButton onClick={() => setOpen(true)} dark={dark} />
+      <ChatPanel open={open} onClose={() => setOpen(false)} dark={dark} />
     </main>
   );
 }

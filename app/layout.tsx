@@ -1,6 +1,4 @@
-import BackgroundGrid from "@/components/ui/BackgroundGrid";
 import "./globals.css";
-import AIChatWidget from "@/components/ui/AIChatWidget";
 import { AnimatePresence } from "framer-motion";
 
 export const metadata = {
@@ -22,9 +20,8 @@ export default function RootLayout({
             {children}
           </AnimatePresence>
         </div>
-
         {/* AI Widget */}
-        <AIChatWidget />
+       
       </body>
     </html>
   );
