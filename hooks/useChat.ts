@@ -17,26 +17,38 @@ export function useChat() {
     if (!text.trim()) return;
 
     const userMessage: Message = { role: "user", content: text };
+
     setMessages((prev) => [...prev, userMessage]);
     setLoading(true);
 
-    // placeholder assistant message
-    const assistantIndex = messages.length + 1;
+    // Add empty assistant message
     setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
 
     try {
-      // 🔥 Replace this with real API later
-      const res = await fakeStreamResponse(text, (chunk) => {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        body: JSON.stringify({ message: text }),
+      });
+
+      const reader = res.body?.getReader();
+      const decoder = new TextDecoder();
+
+      while (true) {
+        const { done, value } = await reader!.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value);
+
         setMessages((prev) => {
           const copy = [...prev];
-          const last = copy[copy.length - 1];
-          last.content += chunk;
+          copy[copy.length - 1].content += chunk;
           return copy;
         });
-      });
+      }
 
       setLoading(false);
     } catch (err) {
+      console.error(err);
       setLoading(false);
     }
   };

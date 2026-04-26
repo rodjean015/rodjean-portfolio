@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useChat } from "@/hooks/useChat";
 
 type Props = {
@@ -14,11 +14,28 @@ type Props = {
 export default function ChatPanel({ open, onClose, dark = false }: Props) {
     const { messages, sendMessage, loading } = useChat();
     const [input, setInput] = useState("");
+    const [showScrollButton, setShowScrollButton] = useState(false);
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, [messages, loading]);
 
     const handleSend = async () => {
         if (!input.trim()) return;
         await sendMessage(input);
         setInput("");
+    };
+
+    const handleScroll = () => {
+        const el = containerRef.current;
+        if (!el) return;
+
+        const isNotAtBottom =
+            el.scrollHeight - el.scrollTop - el.clientHeight > 80;
+
+        setShowScrollButton(isNotAtBottom);
     };
 
     return (
@@ -103,7 +120,10 @@ export default function ChatPanel({ open, onClose, dark = false }: Props) {
                         </div>
 
                         {/* Messages */}
-                        <div className="flex-1 overflow-y-auto p-4 space-y-4 text-sm">
+                        <div
+                            ref={containerRef}
+                            onScroll={handleScroll}
+                            className="flex-1 overflow-y-auto p-4 space-y-4 text-sm">
                             {messages.map((m, i) => (
                                 <div
                                     key={i}
@@ -164,6 +184,24 @@ export default function ChatPanel({ open, onClose, dark = false }: Props) {
                                 <div className={dark ? "text-neutral-400 text-xs" : "text-neutral-500 text-xs"}>
                                     AI is typing...
                                 </div>
+                            )}
+                            <div ref={messagesEndRef} />
+                            {showScrollButton && (
+                                <button
+                                    onClick={() =>
+                                        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+                                    }
+                                    className={`
+                                            absolute bottom-20 right-4
+                                            px-3 py-1 text-xs rounded-full shadow-md
+                                            transition
+                                            ${dark
+                                            ? "bg-white text-black"
+                                            : "bg-black text-white"}
+                                            `}
+                                >
+                                    ↓ New messages
+                                </button>
                             )}
                         </div>
 
