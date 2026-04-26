@@ -78,14 +78,14 @@ export default function ChatPanel({ open, onClose, dark = false }: Props) {
                             {/* Title + online status */}
                             <div className="flex items-center gap-4">
                                 <img
-                                    src="/profile-pic.png"
+                                    src="/profile-assistant.png"
                                     alt="AI"
                                     className="w-9 h-9 rounded-full object-cover bg-zinc-200"
                                 />
 
                                 {/* name + status stacked */}
                                 <div className="flex flex-col leading-tight">
-                                    <h2 className="text-sm font-medium">Rodjean Verzosa</h2>
+                                    <h2 className="text-sm font-medium">Rodjean's Assistant</h2>
 
                                     {/* online badge */}
                                     <div className="flex items-center gap-1 mt-0.5">
@@ -134,7 +134,7 @@ export default function ChatPanel({ open, onClose, dark = false }: Props) {
                                     {m.role !== "user" && (
                                         <div className="relative w-7 h-7">
                                             <img
-                                                src="/profile-pic.png"
+                                                src="/profile-assistant.png"
                                                 alt="AI"
                                                 className="w-7 h-7 rounded-full object-cover bg-zinc-200"
                                             />

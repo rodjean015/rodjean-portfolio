@@ -1,5 +1,6 @@
 "use client";
 
+import { getGreeting } from "@/utils/greeting";
 import { useState } from "react";
 
 type Message = {
@@ -8,8 +9,11 @@ type Message = {
 };
 
 export function useChat() {
-  const [messages, setMessages] = useState<Message[]>([
-    { role: "assistant", content: "Hi 👋 How can I help you?" },
+  const [messages, setMessages] = useState<Message[]>(() => [
+    {
+      role: "assistant",
+      content: `${getGreeting()} I'm Rodjean's AI portfolio assistant. How can I help you?`,
+    },
   ]);
   const [loading, setLoading] = useState(false);
 
