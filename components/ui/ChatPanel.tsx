@@ -58,10 +58,11 @@ export default function ChatPanel({ open, onClose, dark = false }: Props) {
                         exit={{ y: "100%" }}
                         transition={{ type: "spring", stiffness: 260, damping: 25 }}
                         className={`
-                            fixed bottom-6 right-6
-                            w-[92vw] sm:w-[420px] h-[75vh]
-                            z-50 shadow-2xl
-                            flex flex-col border
+                            fixed z-50 shadow-2xl flex flex-col border
+                            bottom-0 left-1/2 -translate-x-1/2
+                            sm:bottom-6 sm:left-auto sm:right-6 sm:translate-x-0
+                            w-[100vw] sm:w-[420px] h-[75vh]
+                            rounded-t-2xl sm:rounded-none
                             ${dark
                                 ? "bg-zinc-900 text-neutral-100 border-neutral-800"
                                 : "bg-white text-neutral-900 border-neutral-200"}
@@ -192,13 +193,11 @@ export default function ChatPanel({ open, onClose, dark = false }: Props) {
                                         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
                                     }
                                     className={`
-                                            absolute bottom-20 right-4
-                                            px-3 py-1 text-xs rounded-full shadow-md
-                                            transition
-                                            ${dark
-                                            ? "bg-white text-black"
-                                            : "bg-black text-white"}
-                                            `}
+                                        absolute bottom-20 left-1/2 -translate-x-1/2
+                                        px-3 py-1 text-xs rounded-full shadow-md
+                                        transition
+                                        ${dark ? "bg-white text-black" : "bg-black text-white"}
+                                    `}
                                 >
                                     ↓ New messages
                                 </button>

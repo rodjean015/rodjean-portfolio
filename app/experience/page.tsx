@@ -19,13 +19,13 @@ export default function ExperiencePage() {
 
     return (
         <motion.main
-            className="max-w-3xl mx-auto px-4 py-12"
+            className="max-w-3xl mx-auto px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
         >
-            <header className="mb-12 flex flex-col md:flex-row md:items-stretch gap-8 relative">
+            <header className="mb-12 flex flex-col md:flex-row md:items-stretch gap-2 relative">
                 <BackLink dark={dark} />
                 <ThemeToggleButton dark={dark} onToggle={toggleTheme} />
             </header>
