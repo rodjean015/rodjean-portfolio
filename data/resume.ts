@@ -8,7 +8,7 @@ export const resume = {
     location: "Montalban Rizal, Philippines",
     email: "rodjeanverzosa001@gmail.com",
     github: "https://github.com/rodjean015",
-    linkedin: "www.linkedin.com/in/rodjean-verzosa-326a7b255",
+    linkedin: "https://www.linkedin.com/in/rodjean-verzosa-326a7b255",
   },
 
   experience: [
@@ -17,7 +17,7 @@ export const resume = {
       role: "Senior Fullstack Engineer",
       period: "2024 - Present",
       description:
-        "Developed and deployed planning software infrastructure at iPick – Booking Services to improve operational efficiency. Led code and security migrations to ensure system integrity and compliance. Collaborated with cross-functional teams to streamline deployment processes and enhance overall productivity. Contributed as a full-stack engineer to mobile application development, improving user experience.",
+        "Developed and deployed planning software infrastructure at iPick - Booking Services to improve operational efficiency. Led code and security migrations to ensure system integrity and compliance. Collaborated with cross-functional teams to streamline deployment processes and enhance overall productivity. Contributed as a full-stack engineer to mobile application development, improving user experience.",
     },
   ],
 
