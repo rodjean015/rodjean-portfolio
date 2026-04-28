@@ -42,7 +42,7 @@ export default function Home() {
         />
       </Section>
 
-      <Section title="Experience" dark={dark} moreHref="/experience">
+      <Section title="Experience" dark={dark} moreHref="/experience" borderLeft>
         {resume.experience.map((exp) => (
           <ResumeItem
             key={exp.company + exp.role}
@@ -55,7 +55,7 @@ export default function Home() {
         ))}
       </Section>
 
-      <Section title="Projects" dark={dark} moreHref="/projects">
+      <Section title="Projects" dark={dark} moreHref="/projects" borderLeft>
         {resume.projects.map((proj) => (
           <ResumeItem
             key={proj.name}
@@ -66,7 +66,7 @@ export default function Home() {
         ))}
       </Section>
 
-      <Section title="Tech Skills" dark={dark} moreHref="/tech">
+      <Section title="Tech Skills" dark={dark} moreHref="/tech" borderLeft>
         <div className="flex flex-wrap gap-2">
           {resume.skills.map((skill, i) => (
             <SkillBadge key={i} skill={skill} dark={dark} />
@@ -74,7 +74,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section title="Education" dark={dark}>
+      <Section title="Education" dark={dark} borderLeft>
         {resume.education.map((edu) => (
           <ResumeItem
             key={edu.school + edu.degree}
@@ -86,7 +86,7 @@ export default function Home() {
         ))}
       </Section>
 
-      <Section title="Certification" dark={dark}>
+      <Section title="Certification" dark={dark} borderLeft>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
           {resume.certificate.map((crt) => (
             <ResumeItem

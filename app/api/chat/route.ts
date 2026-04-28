@@ -1,6 +1,7 @@
 import { streamText } from "ai";
 import { createGroq } from "@ai-sdk/groq";
 import { resume } from "../../../data/resume";
+import { experience } from "@/data/experience";
 
 export const runtime = "edge";
 
@@ -21,6 +22,8 @@ Rules:
 
 PORTFOLIO DATA:
 ${JSON.stringify(resume, null, 2)}
+---
+${JSON.stringify(experience, null, 2)}
 `;
 
 export async function POST(req: Request) {

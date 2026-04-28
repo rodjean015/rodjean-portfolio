@@ -37,6 +37,7 @@ export const resume = {
     ".Net",
     "React",
     "Next.js",
+    "Angular",
     "Node.js",
     "Tailwind CSS",
     "MongoDB",
@@ -49,6 +50,10 @@ export const resume = {
     "Ionic",
     "Android",
     "IOS",
+    "Tensor Flow",
+    "Scikit Learn",
+    "Arduino",
+    "Machine Learning"
   ],
 
   education: [
@@ -77,4 +82,6 @@ export const resume = {
       period: "Issue: January 20,2024",
     },
   ],
+  salary: "90,000 PHP - 150,000 PHP",
+  workType: "WFH or Hybrid"
 };

@@ -63,16 +63,3 @@ export function useChat() {
     loading,
   };
 }
-
-// fake streaming (replace with real API later)
-async function fakeStreamResponse(
-  input: string,
-  onChunk: (chunk: string) => void,
-) {
-  const response = `You said: "${input}". This is a streamed response.`;
-
-  for (const char of response) {
-    await new Promise((r) => setTimeout(r, 15));
-    onChunk(char);
-  }
-}

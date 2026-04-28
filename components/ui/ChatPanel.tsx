@@ -44,7 +44,7 @@ export default function ChatPanel({ open, onClose, dark = false }: Props) {
                 <>
                     {/* Overlay */}
                     <motion.div
-                        className="fixed inset-0 bg-black/50 z-40"
+                        className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -53,20 +53,51 @@ export default function ChatPanel({ open, onClose, dark = false }: Props) {
 
                     {/* Panel */}
                     <motion.div
-                        initial={{ y: "100%" }}
-                        animate={{ y: 0 }}
-                        exit={{ y: "100%" }}
-                        transition={{ type: "spring", stiffness: 260, damping: 25 }}
+                        initial={{
+                            y: "100%",
+                            opacity: 0,
+                            skewY: 6,
+                            scale: 0.98,
+                        }}
+                        animate={{
+                            y: 0,
+                            opacity: 1,
+                            skewY: 0,
+                            scale: 1,
+                        }}
+                        exit={{
+                            y: "100%",
+                            opacity: 0,
+                            skewY: 6,
+                            scale: 0.98,
+                        }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 240,
+                            damping: 26,
+                            mass: 0.9,
+                        }}
+                        drag="y"
+                        dragDirectionLock
+                        dragElastic={0.2}
+                        dragConstraints={{ top: 0, bottom: 0 }}
+                        onDragEnd={(e, info) => {
+                            if (info.offset.y > 120) {
+                                onClose();
+                            }
+                        }}
                         className={`
-                            fixed z-50 shadow-2xl flex flex-col border
-                            bottom-0 left-1/2 -translate-x-1/2
-                            sm:bottom-6 sm:left-auto sm:right-6 sm:translate-x-0
-                            w-[100vw] sm:w-[420px] h-[75vh]
-                            rounded-t-2xl sm:rounded-none
-                            ${dark
-                                ? "bg-zinc-900 text-neutral-100 border-neutral-800"
-                                : "bg-white text-neutral-900 border-neutral-200"}
-                        `}
+        fixed z-50 shadow-2xl flex flex-col border
+        bottom-0 left-1/2 -translate-x-1/2
+        sm:bottom-6 sm:left-auto sm:right-6 sm:translate-x-0
+        w-[100vw] sm:w-[420px] h-[75vh]
+        rounded-t-2xl sm:rounded-none
+        origin-bottom
+        [transform-perspective:1000px]
+        ${dark
+                                ? "bg-zinc-900/95 backdrop-blur-xl text-neutral-100 border-neutral-800"
+                                : "bg-white/90 backdrop-blur-xl text-neutral-900 border-neutral-200"}
+    `}
                     >
                         {/* Header */}
                         <div
@@ -75,6 +106,7 @@ export default function ChatPanel({ open, onClose, dark = false }: Props) {
                                 ${dark ? "border-neutral-800" : "border-neutral-200"}
                             `}
                         >
+
                             {/* Title + online status */}
                             <div className="flex items-center gap-4">
                                 <img
