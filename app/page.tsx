@@ -17,17 +17,12 @@ import BackgroundGrid from "@/components/ui/BackgroundGrid";
 export default function Home() {
   const { dark, setDark } = useTheme();
   const [open, setOpen] = useState(false);
-
   const toggleTheme = () => setDark(prev => !prev);
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark);
-  }, [dark]);
-
   return (
     <main>
       {/* Header */}
       <header className="mb-8 flex flex-row items-center gap-6 relative">
-        <BackgroundGrid dark={dark}/>
+        <BackgroundGrid dark={dark} />
         <ThemeToggleButton dark={dark} onToggle={toggleTheme} />
         <Profile dark={dark} />
         <div className="flex-1">
@@ -55,15 +50,18 @@ export default function Home() {
         ))}
       </Section>
 
-      <Section title="Projects" dark={dark} moreHref="/projects" borderLeft>
-        {resume.projects.map((proj) => (
-          <ResumeItem
-            key={proj.name}
-            title={proj.name}
-            description={proj.description}
-            dark={dark}
-          />
-        ))}
+      <Section title="Projects" dark={dark} borderLeft>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 ">
+          {resume.projects.map((proj) => (
+            <ResumeItem
+              key={proj.name}
+              title={proj.name}
+              description={proj.description}
+              link={proj.link}
+              dark={dark}
+            />
+          ))}
+        </div>
       </Section>
 
       <Section title="Tech Skills" dark={dark} moreHref="/tech" borderLeft>

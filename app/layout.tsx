@@ -13,10 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="relative min-h-screen overflow-x-hidden bg-white dark:bg-neutral-950">
+      <body className="relative min-h-screen overflow-x-hidden">
         {/* Content */}
         <div className="relative z-10 container py-10">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="sync">
             {children}
           </AnimatePresence>
         </div>

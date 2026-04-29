@@ -23,8 +23,27 @@ export const resume = {
 
   projects: [
     {
-      name: "Portfolio Website",
-      description: "Personal website built with Next.js App Router.",
+      name: "IPICK - Booking Services",
+      description:
+        "Built and improved booking system infrastructure, enhancing performance, security, and user experience.",
+      link: "https://www.ipickph.com/",
+    },
+    {
+      name: "IKOMUTPH - Automated Fare Calculation",
+      description:
+        "Developed a real-time bus ticketing and fleet monitoring platform with IoT data integration and cloud scaling.",
+      link: "#",
+    },
+    {
+      name: "Casino Strategy Bots (Baccarat & Blackjack)",
+      description:
+        "Created autonomous betting bots using statistical models and card counting strategies.",
+      link: "#",
+    },
+    {
+      name: "Poker AI System",
+      description:
+        "Built a reinforcement learning-based poker AI with scalable training and deployment pipelines.",
       link: "#",
     },
   ],
@@ -53,7 +72,7 @@ export const resume = {
     "Tensor Flow",
     "Scikit Learn",
     "Arduino",
-    "Machine Learning"
+    "Machine Learning",
   ],
 
   education: [
@@ -83,5 +102,5 @@ export const resume = {
     },
   ],
   salary: "90,000 PHP - 150,000 PHP",
-  workType: "WFH or Hybrid"
+  workType: "WFH or Hybrid",
 };

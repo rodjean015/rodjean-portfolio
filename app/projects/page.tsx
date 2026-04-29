@@ -10,9 +10,6 @@ import BackLink from "@/components/ui/BackButton";
 export default function ExperiencePage() {
     const { dark, setDark } = useTheme();
     const toggleTheme = () => setDark(prev => !prev);
-    useEffect(() => {
-        document.documentElement.classList.toggle("dark", dark);
-    }, [dark]);
     return (
         <main className="max-w-3xl mx-auto px-4 py-12">
             <header className="mb-12 flex flex-col md:flex-row md:items-stretch gap-8 relative">

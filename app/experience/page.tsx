@@ -13,10 +13,6 @@ export default function ExperiencePage() {
     const { dark, setDark } = useTheme();
     const toggleTheme = () => setDark(prev => !prev);
 
-    useEffect(() => {
-        document.documentElement.classList.toggle("dark", dark);
-    }, [dark]);
-
     const theme = {
         bg: dark ? "bg-neutral-900/40" : "bg-white",
         card: dark ? "bg-neutral-900" : "bg-white",
