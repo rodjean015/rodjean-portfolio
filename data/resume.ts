@@ -35,6 +35,12 @@ export const resume = {
       link: "#",
     },
     {
+      name: "Clip Crew",
+      description:
+        "A hair salon and clothing shop offering grooming services and curated fashion pieces in one space.",
+      link: "https://www.clipcrew.shop",
+    },
+    {
       name: "Casino Strategy Bots (Baccarat & Blackjack)",
       description:
         "Created autonomous betting bots using statistical models and card counting strategies.",
