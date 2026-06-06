@@ -32,7 +32,7 @@ export const resume = {
       name: "IKOMUTPH - Automated Fare Calculation",
       description:
         "Developed a real-time bus ticketing and fleet monitoring platform with IoT data integration and cloud scaling.",
-      link: "#",
+      link: "https://www.ikomyut.com",
     },
     {
       name: "Clip Crew",
