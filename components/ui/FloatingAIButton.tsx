@@ -26,6 +26,7 @@ export default function FloatingAIButton({
             {/* Button */}
             <motion.button
                 onClick={onClick}
+                aria-label="Chat with Agent"
                 whileTap={{ scale: 0.9 }}
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 20 }}

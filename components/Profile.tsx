@@ -3,18 +3,18 @@ import Image from "next/image";
 
 export default function Profile({ dark }: { dark: boolean }) {
     return (
-        <div className="flex justify-start md:justify-start shrink-0">
+        <div className="flex justify-start shrink-0">
             <motion.div
-                className="relative overflow-hidden"
+                className="relative overflow-hidden self-stretch w-25 md:w-[130px]"
                 initial="rest"
                 whileHover="hover"
             >
                 <Image
                     src="/profile-pic.png"
                     alt="Profile picture"
-                    width={130}
-                    height={130}
-                    className={`object-cover w-25 h-25 md:w-[130px] md:h-[130px]
+                    fill
+                    sizes="(min-width: 768px) 130px, 100px"
+                    className={`object-cover
                         ${dark ? "bg-slate-700" : "bg-slate-300"}
                     `}
                     priority

@@ -141,6 +141,7 @@ export default function ChatPanel({ open, onClose, dark = false }: Props) {
                             {/* Close button */}
                             <button
                                 onClick={onClose}
+                                aria-label="Close chat"
                                 className={`
                                     transition
                                     ${dark

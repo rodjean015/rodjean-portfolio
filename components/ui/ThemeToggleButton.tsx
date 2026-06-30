@@ -13,6 +13,7 @@ export default function ThemeToggleButton({
     return (
         <button
             onClick={onToggle}
+            aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
             className={`absolute top-0 right-0 flex items-center w-10 h-5 rounded-full p-1 transition
                 ${dark
                     ? "bg-slate-800 shadow-[0_0_12px_rgba(255,255,255,0.1)]"

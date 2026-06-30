@@ -99,7 +99,7 @@ export const resume = {
       period: "Issue: June 12, 2023",
     },
     {
-      title: "Resposive Web Design",
+      title: "Responsive Web Design",
       period: "Issue: June 12, 2023",
     },
     {

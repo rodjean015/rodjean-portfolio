@@ -1,4 +1,4 @@
-import { MapPin } from "lucide-react";
+import { MapPin, Download } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Mail } from "lucide-react";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
@@ -32,6 +32,20 @@ export default function ProfileIntro({ resume, dark }: ProfileIntroProps) {
             <p className="mt-1 text-sm md:text-base">
                 {resume.title}
             </p>
+
+            {/* Download resume */}
+            <a
+                href="/Rodjean-Verzosa-Resume.pdf"
+                download
+                className={`mt-3 inline-flex items-center gap-2 self-start text-xs md:text-sm px-3 py-1.5 rounded-md border transition w-fit
+                    ${dark
+                        ? "border-neutral-700 text-neutral-200 hover:bg-neutral-800"
+                        : "border-neutral-300 text-neutral-800 hover:bg-neutral-100"
+                    }`}
+            >
+                <Download size={14} className="md:w-4 md:h-4" />
+                <span>Download Resume</span>
+            </a>
 
             {/* Contact block */}
             <div
